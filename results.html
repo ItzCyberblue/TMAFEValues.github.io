@@ -1,0 +1,244 @@
+<head>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:400,700" rel="stylesheet">
+<link href='style.css' rel='stylesheet' type='text/css'>
+<title>TMAFEValues Results</title>
+<link rel="icon" type="x-icon" href="icon.png">
+<link rel="shortcut icon" type="x-icon" href="icon.png">
+<meta charset="utf-8">
+<script>
+  version = "Test Edition #1" //Remember to update this before making changes to the test itself!
+</script>
+</head>
+<script type="application/javascript"
+        src="ideologies.js">
+</script>
+
+<body>
+<h1>TMAFEValues</h1>
+<hr>
+
+<h1>Results</h1>
+
+<h2>Foreign Axis: <span class="weight-300" id="foreign-label"></span></h2>
+<div class="axis">
+    <div class="bar passive" id="bar-passive"><div class="text-wrapper" id="passive"></div></div>
+    <div class="bar aggressive" id="bar-aggressive"><div class="text-wrapper" id="aggressive"></div></div>
+</div>
+<h2>Civil Axis: <span class="weight-300" id="civil-label"></span></h2>
+<div class="axis">
+    <div class="bar freedom" id="bar-freedom"><div class="text-wrapper" id="freedom"></div></div>
+    <div class="bar 1984" id="bar-1984"><div class="text-wrapper" id="1984"></div></div>
+</div>
+<h2>Culture Axis: <span class="weight-300" id="culture-label"></span></h2>
+<div class="axis">
+    <div class="bar kiddie" id="bar-kiddie"><div class="text-wrapper" id="kiddie"></div></div>
+    <div class="bar traditional" id="bar-traditional"><div class="text-wrapper" id="traditional"></div></div>
+</div>
+<h2>Social Axis: <span class="weight-300" id="social-label"></span></h2>
+<div class="axis">
+    <div class="bar conservative" id="bar-conservative"><div class="text-wrapper" id="conservative"></div></div>
+    <div class="bar progressive" id="bar-progressive"><div class="text-wrapper" id="progressive"></div></div>
+</div>
+<h2>Economy Axis: <span class="weight-300" id="economy-label"></span></h2>
+<div class="axis">
+    <div class="bar equality" id="bar-equality"><div class="text-wrapper" id="equality"></div></div>
+    <div class="bar markets" id="bar-markets"><div class="text-wrapper" id="markets"></div></div>
+</div>
+<h2>Closest Match: <span class="weight-300" id="ideology-label"></span></h2>
+<p>Ideological matching is a work in progress, and is much less accurate than the values and axes.</p>
+<p>You can send these results by copying and pasting the URL at the top of the page or using the image below. Think your matched ideology was wrong? Want to help us calibrate the test? Send the results along with your political ideology to us at eightvalues@gmail.com, or send us any comments, questions, or criticism. </p>
+<hr/>
+<img src="" id="banner">
+<button class="button" onclick="location.href='index.html';">Back</button> <br>
+<!-- Website visit statistics - no personal information is collected! -->
+<script type="text/javascript">
+var sc_project=11325211;
+var sc_invisible=1;
+var sc_security="fd9f0659";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web stats"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="//c.statcounter.com/11325211/0/fd9f0659/1/" alt="web
+stats"></a></div></noscript>
+<script>
+    function getQueryVariable(variable)
+    {
+           var query = window.location.search.substring(1)
+           var vars = query.split("&")
+           for (var i=0;i<vars.length;i++) {
+                   var pair = vars[i].split("=")
+                   if(pair[0] == variable) {return pair[1]}
+           }
+           return(NaN);
+    }
+
+    function setBarValue(name, value) {
+        innerel = document.getElementById(name)
+        outerel = document.getElementById("bar-" + name)
+        outerel.style.width = (value + "%")
+        innerel.innerHTML = (value + "%")
+        if (innerel.offsetWidth + 20 > outerel.offsetWidth) {
+            innerel.style.visibility = "hidden"
+        }
+    }
+
+    foreignArray = ["Globalist","Cooperative","Passive","Moderate","Mistrusting","Isolationist","Aggressive Imperialist"]
+    civilArray = ["Anarchist","Libertarian","Classic Liberal","Balanced","Statist","Authoritarian","Orwellian"]
+    cultureArray = ["Massive Kiddie","Kiddie","Slightly Immature","Reasonable","Mature","Frontierist","ohok"]
+    socialArray = ["Racist","Very Conservative","Conservative","Neutral","Progressive","Very Progressive","Revolutionary"]
+    economyArray = ["Communist","Socialist","Social","Centrist","Market","Capitalist","Laissez-Faire"]
+
+    function setLabel(val,ary) {
+        if (val > 100) { return "" } else
+        if (val > 90) { return ary[0] } else
+        if (val > 75) { return ary[1] } else
+        if (val > 60) { return ary[2] } else
+        if (val >= 40) { return ary[3] } else
+        if (val >= 25) { return ary[4] } else
+        if (val >= 10) { return ary[5] } else
+        if (val >= 0) { return ary[6] } else
+        	{return ""}
+    }
+
+    passive  = getQueryVariable("f")
+    freedom     = getQueryVariable("cv")
+    kiddie   = getQueryVariable("ct")
+    conservative  = getQueryVariable("s")
+    equality  = getQueryVariable("e")
+    aggressive    = (100 - passive).toFixed(1)
+    1984     = (100 - freedom).toFixed(1)
+    traditional = (100 - kiddie ).toFixed(1)
+    progressive = (100 - conservative).toFixed(1)
+    markets = (100 - equality).toFixed(1)
+
+    setBarValue("passive", passive)
+    setBarValue("aggressive", aggressive)
+    setBarValue("freedom", freedom)
+    setBarValue("1984", 1984)
+    setBarValue("kiddie", kiddie)
+    setBarValue("traditional", traditional)
+    setBarValue("conservative", conservative)
+    setBarValue("progressive", progressive)
+    setBarValue("equality", equality)
+    setBarValue("markets", markets)
+
+    document.getElementById("foreign-label").innerHTML = setLabel(passive, foreignArray)
+    document.getElementById("civil-label").innerHTML = setLabel(freedom, civilArray)
+    document.getElementById("culture-label").innerHTML = setLabel(kiddie, cultureArray)
+    document.getElementById("social-label").innerHTML = setLabel(conservative, socialArray)
+    document.getElementById("economy-label").innerHTML = setLabel(equality, economyArray)
+
+    ideology = ""
+    ideodist = Infinity
+    for (var i = 0; i < ideologies.length; i++) {
+        dist = 0
+        dist += Math.pow(Math.abs(ideologies[i].stats.foreign - passive), 2)
+        dist += Math.pow(Math.abs(ideologies[i].stats.civil - freedom), 2)
+        dist += Math.pow(Math.abs(ideologies[i].stats.culture - kiddie), 1.73856063)
+        dist += Math.pow(Math.abs(ideologies[i].stats.social - conservative), 1.73856063)
+        dist += Math.pow(Math.abs(ideologies[i].stats.economy - equality), 1.73856063)
+        if (dist < ideodist) {
+            ideology = ideologies[i].name
+            ideodist = dist
+        }
+    }
+    document.getElementById("ideology-label").innerHTML = ideology
+
+    function createImage(src, x, y, w, h) {
+        img = new Image ()
+        img.src = src
+        img.onLoad = function() {
+            ctx.drawImage(img, x, y, w, h)
+        }
+    }
+
+    window.onload = function() {
+        var c = document.createElement("canvas")
+        var ctx = c.getContext("2d")
+        c.width = 800;
+        c.height = 650;
+        ctx.fillStyle = "#EEEEEE"
+        ctx.fillRect(0,0,800,650);
+
+        img = document.getElementById("img-equality")
+        ctx.drawImage(img, 20, 170, 100, 100);
+        img = document.getElementById("img-wealth")
+        ctx.drawImage(img, 680, 170, 100, 100)
+        img = document.getElementById("img-might")
+        ctx.drawImage(img, 20, 290, 100, 100)
+        img = document.getElementById("img-peace")
+        ctx.drawImage(img, 680, 290, 100, 100)
+        img = document.getElementById("img-liberty")
+        ctx.drawImage(img, 20, 410, 100, 100)
+        img = document.getElementById("img-authority")
+        ctx.drawImage(img, 680, 410, 100, 100)
+        img = document.getElementById("img-tradition")
+        ctx.drawImage(img, 20, 530, 100, 100)
+        img = document.getElementById("img-progress")
+        ctx.drawImage(img, 680, 530, 100, 100)
+
+        ctx.fillStyle="#222222"
+        ctx.fillRect(120, 180, 560, 80)
+        ctx.fillRect(120, 300, 560, 80)
+        ctx.fillRect(120, 420, 560, 80)
+        ctx.fillRect(120, 540, 560, 80)
+        ctx.fillStyle="#11bef7"
+        ctx.fillRect(120, 184, 5.6*passive-2, 72)
+        ctx.fillStyle="#b50b1f"
+        ctx.fillRect(682-5.6*aggressive, 184, 5.6*aggressive-2, 72)
+        ctx.fillStyle="#fbc02d"
+        ctx.fillRect(120, 304, 5.6*freedom-2, 72)
+        ctx.fillStyle="#ff0000"
+        ctx.fillRect(682-5.6*1984, 304, 5.6*1984-2, 72)
+        ctx.fillStyle="#860275"
+        ctx.fillRect(120, 424, 5.6*kiddie-2, 72)
+        ctx.fillStyle="#696969"
+        ctx.fillRect(682-5.6*traditional, 424, 5.6*traditional-2, 72)
+        ctx.fillStyle="#689f38"
+        ctx.fillRect(120, 544, 5.6*conservative-2, 72)
+        ctx.fillStyle="#7b1fa2"
+        ctx.fillRect(682-5.6*progressive, 544, 5.6*progressive-2, 72)
+        ctx.fillStyle="#d32f2f"
+        ctx.fillRect(120, 544, 5.6*equality-2, 72)
+        ctx.fillStyle="#00796b"
+        ctx.fillRect(682-5.6*markets, 664, 5.6*markets-2, 72)
+        ctx.fillStyle="#222222"
+        ctx.font="700 80px Montserrat"
+        ctx.textAlign="left"
+        ctx.fillText("TMAFEValues", 20, 90)
+        ctx.font="50px Montserrat"
+        ctx.fillText(ideology, 20, 140)
+
+        ctx.textAlign="left"
+        if (passive  > 30) {ctx.fillText(passive + "%", 130, 237.5)}
+        if (freedom  > 30) {ctx.fillText(freedom + "%", 130, 357.5)}
+        if (kiddie   > 30) {ctx.fillText(kiddie + "%", 130, 477.5)}
+        if (conservative > 30) {ctx.fillText(conservative + "%", 130, 597.5)}
+        if (equality >30) {ctx.fillText(equality + "%", 130, 717.5)}
+        ctx.textAlign="right"
+        if (aggressive    > 30) {ctx.fillText(aggressive + "%", 670, 237.5)}
+        if (1984     > 30) {ctx.fillText(1984 + "%", 670, 357.5)}
+        if (traditional > 30) {ctx.fillText(traditional + "%", 670, 477.5)}
+        if (progressive  > 30) {ctx.fillText(progressive + "%", 670, 597.5)}
+        if (markets > 30) {ctx.fillText(markets + "%", 670, 717.5)}
+
+        ctx.font="300 30px Montserrat"
+        ctx.fillText("TMAFEValues.github.io", 780, 60)
+		ctx.fillText(version, 780, 90)
+        ctx.textAlign="center"
+        ctx.fillText("Foreign Axis: " + document.getElementById("foreign-label").innerHTML, 400, 175)
+        ctx.fillText("Civil Axis: " + document.getElementById("civil-label").innerHTML, 400, 295)
+        ctx.fillText("Culture Axis: " + document.getElementById("culture-label").innerHTML, 400, 415)
+        ctx.fillText("Social Axis: " + document.getElementById("social-label").innerHTML, 400, 535)
+        ctx.fillText("Economy Axis: " + document.getElementById("economy-label").innerHTML, 400, 655)
+
+        document.getElementById("banner").src = c.toDataURL();
+    }
+    </script>
+</body>
